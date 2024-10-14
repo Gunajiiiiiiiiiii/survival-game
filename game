@@ -1,0 +1,143 @@
+#include <stdio.h>
+#include <windows.h>
+
+int main() {
+    int strength, intelligence, speed, total_score, scenario;
+    char action;
+
+    printf("Welcome to the Enhanced Survival Game!\n");
+    Sleep(1500);
+    printf("Rate yourself in three categories (1 to 10) for survival:\n");
+    Sleep(1000);
+
+strength_label:
+    printf("Strength: ");
+    scanf("%d", &strength);
+    if (strength < 1 || strength > 10) {
+        printf("Invalid rating for strength. Please enter a number between 1 and 10.\n");
+        Sleep(1000);
+        goto strength_label;
+    }
+
+intelligence_label:
+    printf("Intelligence: ");
+    scanf("%d", &intelligence);
+    if (intelligence < 1 || intelligence > 10) {
+        printf("Invalid rating for intelligence. Please enter a number between 1 and 10.\n");
+        Sleep(1000);
+        goto intelligence_label;
+    }
+
+speed_label:
+    printf("Speed: ");
+    scanf("%d", &speed);
+    if (speed < 1 || speed > 10) {
+        printf("Invalid rating for speed. Please enter a number between 1 and 10.\n");
+        Sleep(1000);
+        goto speed_label;
+    }
+
+    total_score = strength + intelligence + speed;
+    Sleep(500);
+    
+scenario_label:
+    printf("\nChoose a Survival Scenario:\n");
+    Sleep(1000);
+    printf("1. Stranded on a deserted island.\n");
+    printf("2. Lost in a dense jungle.\n");
+    printf("3. Caught in a snowstorm on a mountain.\n");
+    printf("Enter the number of your chosen scenario: ");
+    scanf("%d", &scenario);
+    Sleep(500);
+
+    switch (scenario) {
+        case 1:
+            printf("\nYou are stranded on a deserted island. What will you do?\n");
+            Sleep(1000);
+            printf("a. Build a shelter.\n");
+            printf("b. Search for food.\n");
+            printf("c. Do nothing.\n");
+            printf("Choose your action (a/b/c): ");
+            scanf(" %c", &action);
+            Sleep(500);
+
+            if (action == 'a') {
+                total_score += 3;
+                printf("You successfully built a sturdy shelter! Your score increased by 3.\n");
+            } else if (action == 'b') {
+                total_score += 3;
+                printf("You found edible fruits and water! Your score increased by 3.\n");
+            } else if (action == 'c') {
+                total_score -= 3;
+                printf("Doing nothing has left you vulnerable to the elements. Your score decreased by 3.\n");
+            }
+            break;
+
+        case 2:
+            printf("\nYou are lost in a dense jungle. What will you do?\n");
+            Sleep(1000);
+            printf("a. Climb a tree to find your way.\n");
+            printf("b. Look for a river.\n");
+            printf("c. Panic and run aimlessly.\n");
+            printf("Choose your action (a/b/c): ");
+            scanf(" %c", &action);
+            Sleep(500);
+
+            if (action == 'a') {
+                total_score += 3;
+                printf("You quickly climb the tree and spot the way out! Your score increased by 3.\n");
+            } else if (action == 'b') {
+                total_score += 3;
+                printf("You find the river, which leads to civilization! Your score increased by 3.\n");
+            } else if (action == 'c') {
+                total_score -= 3;
+                printf("Panic leads you deeper into the jungle without a plan. Your score decreased by 3.\n");
+            }
+            break;
+
+        case 3:
+            printf("\nYou are caught in a snowstorm on a mountain. What will you do?\n");
+            Sleep(1000);
+            printf("a. Build a fire.\n");
+            printf("b. Look for a cave.\n");
+            printf("c. Ignore the storm.\n");
+            printf("Choose your action (a/b/c): ");
+            scanf(" %c", &action);
+            Sleep(500);
+
+            if (action == 'a') {
+                total_score += 3;
+                printf("You successfully build a fire to stay warm! Your score increased by 3.\n");
+            } else if (action == 'b') {
+                total_score += 3;
+                printf("You find a cave to shelter from the storm! Your score increased by 3.\n");
+            } else if (action == 'c') {
+                total_score -= 3;
+                printf("Ignoring the storm leaves you exposed and cold. Your score decreased by 3.\n");
+            }
+            break;
+
+        default:
+            printf("Invalid scenario choice! Please choose a valid option.\n");
+            Sleep(1000);
+            goto scenario_label;
+    }
+
+    printf("\nEvaluating your overall survival chances...\n");
+    Sleep(2000);
+    if (total_score > 27) {
+        printf("Incredible! You survived effortlessly and became a hero!\n");
+    } else if (total_score > 22) {
+        printf("You survived with ease; your skills were excellent!\n");
+    } else if (total_score > 18) {
+        printf("You survived, but it was quite challenging.\n");
+    } else if (total_score > 12) {
+        printf("You barely survived; it was a close call.\n");
+    } else if (total_score > 8) {
+        printf("You struggled greatly but somehow survived.\n");
+    } else {
+        printf("Unfortunately, you didn't make it. Better luck next time.\n");
+    }
+
+    return 0;
+}
