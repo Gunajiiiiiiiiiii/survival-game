@@ -51,7 +51,9 @@ scenario_label:
     Sleep(500);
 
     switch (scenario) {
+       
         case 1:
+         desert_label:
             printf("\nYou are stranded on a deserted island. What will you do?\n");
             Sleep(1000);
             printf("a. Build a shelter.\n");
@@ -71,9 +73,15 @@ scenario_label:
                 total_score -= 3;
                 printf("Doing nothing has left you vulnerable to the elements. Your score decreased by 3.\n");
             }
+            else {
+                printf("\nEnter valid input\n");
+                goto desert_label;
+            }
             break;
 
+       
         case 2:
+         jungle_label:
             printf("\nYou are lost in a dense jungle. What will you do?\n");
             Sleep(1000);
             printf("a. Climb a tree to find your way.\n");
@@ -93,9 +101,14 @@ scenario_label:
                 total_score -= 3;
                 printf("Panic leads you deeper into the jungle without a plan. Your score decreased by 3.\n");
             }
+            else {
+                printf("\nEnter valid input\n");
+                goto jungle_label;
+            }
             break;
 
         case 3:
+        mountain_label:
             printf("\nYou are caught in a snowstorm on a mountain. What will you do?\n");
             Sleep(1000);
             printf("a. Build a fire.\n");
@@ -115,6 +128,10 @@ scenario_label:
                 total_score -= 3;
                 printf("Ignoring the storm leaves you exposed and cold. Your score decreased by 3.\n");
             }
+             else {
+                printf("\nEnter valid input\n");
+                goto mountain_label;
+            }
             break;
 
         default:
@@ -124,7 +141,17 @@ scenario_label:
     }
 
     printf("\nEvaluating your overall survival chances...\n");
+    printf("\nTill then check out the outcomes\n");
+    printf("\nIf your score is greater than 27 you survive effortlessly\n");
+    printf("\nIf your score is greater than 22 you survive with ease\n");
+    printf("\nIf your score is greater than 18 you survive but it was challenging\n");
+    printf("\nIf your score is greater than 12 you survive barely\n");
+     printf("\nIf your score is greater than 8 you survived but nobody knows how\n");
+      printf("\n------------------------------------------------------------------------------------------------\n");
     Sleep(2000);
+    printf("\nYour total score is %d \n", total_score);
+    Sleep(2000);
+
     if (total_score > 27) {
         printf("Incredible! You survived effortlessly and became a hero!\n");
     } else if (total_score > 22) {
